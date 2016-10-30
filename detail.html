@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,user-scalable=no"/>
+    <title>HTML5布局</title>
+    <style>
+        * {
+            box-sizing: content-box; /* 伸缩项目自动box-sizing:border-box，所以需调整为content-box */
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            display: flex;
+            flex-direction: column; /* 头、中部、脚纵向显示 */
+        }
+
+        header, footer {
+            flex: 0 0 80px; /* 头、脚尺寸固定，不放大、不缩小 */
+        }
+
+        nav {
+            flex: 0 0 50px; /* 头、脚尺寸固定，不放大、不缩小 */
+            background: green;
+        }
+
+        header {
+            display: flex;
+            flex-flow: row nowrap;
+            justify-content: space-around;
+            align-items: center;
+            border-bottom: 1px red solid;
+        }
+
+        header > h1 {
+            /*flex-basis:300px;*/
+            flex: 0 1 40%;
+            font-size:1.5px;
+        }
+        header>form{
+            flex: 0 1 60%;
+        }
+        section {
+            display: flex;
+            flex-flow: row nowrap;
+            background-color: blueviolet;
+        }
+
+        aside {
+            flex-shrink: 0;
+            flex: 0 0 200px;
+            order: -1;
+            background-color: blue;
+        }
+
+        article {
+            flex: 1;
+        }
+
+        .main {
+            display: flex;
+            flex-flow: row nowrap;
+        }
+        form span button{
+            margin-left:-10px;
+        }
+    </style>
+
+<body>
+<header class="row">
+    <h1>散入东风的空间</h1>
+    <form>
+        <span>
+              <input type="search" placeholder="Search here..." required/>
+        </span>
+      <span>
+          <button type="submit" class="search">Search</button>
+      </span>
+    </form>
+</header>
+<nav class="row">
+    <ul>
+        <li></li>
+        <li></li>
+    </ul>
+</nav>
+<section class="main">
+    <aside>
+        <div class="personal-information">
+            <span>散入东风</span>
+        </div>
+        <div class="category-article">
+            <ul>
+                <li>1</li>
+                <li>2</li>
+                <li>3</li>
+                <li>4</li>
+            </ul>
+        </div>
+    </aside>
+    <article>45623111111112222222222222222222222222222222222222222222222222222222222222222222222222222222222222
+    </article>
+</section>
+<footer></footer>
+</body>
+
+</html>
