@@ -16,9 +16,14 @@
             display: flex;
             flex-direction: column; /* 头、中部、脚纵向显示 */
         }
-
+        @media screen and (max-width: 300px) {
+            .blog-title{
+                display:none;
+            }
+        }
         header, footer {
             flex: 0 0 80px; /* 头、脚尺寸固定，不放大、不缩小 */
+            background-color: aqua;
         }
 
         nav {
@@ -34,14 +39,16 @@
             border-bottom: 1px red solid;
         }
 
-        header > h1 {
+        header  h1 {
             /*flex-basis:300px;*/
             flex: 0 1 40%;
-            font-size:1.5px;
+            font-size: 2vw;
         }
-        header>form{
+
+        header > form {
             flex: 0 1 60%;
         }
+
         section {
             display: flex;
             flex-flow: row nowrap;
@@ -63,22 +70,30 @@
             display: flex;
             flex-flow: row nowrap;
         }
-        form span button{
-            margin-left:-10px;
+
+        form span button {
+            margin-left: -10px;
         }
     </style>
 
 <body>
 <header class="row">
-    <h1>散入东风的空间</h1>
-    <form>
+    <div>
+        <h1 class="blog-title">散入东风的空间</h1>
+    </div>
+    <div>
+        <img/>
+    </div>
+    <div>
+        <form>
         <span>
               <input type="search" placeholder="Search here..." required/>
         </span>
       <span>
           <button type="submit" class="search">Search</button>
       </span>
-    </form>
+        </form>
+    </div>
 </header>
 <nav class="row">
     <ul>
@@ -90,6 +105,7 @@
     <aside>
         <div class="personal-information">
             <span>散入东风</span>
+            <img src=""/>
         </div>
         <div class="category-article">
             <ul>
@@ -99,10 +115,34 @@
                 <li>4</li>
             </ul>
         </div>
+        <div>
+            <p>你好，<span id='nickName'></span></p>
+            <div id="introduce"></div>
+        </div>　
     </aside>
-    <article>45623111111112222222222222222222222222222222222222222222222222222222222222222222222222222222222222
+    <article>22222
     </article>
 </section>
+<script>
+    var userInfo = {};
+    Object.defineProperty(userInfo, "nickName", {
+        get: function(){
+            return document.getElementById('nickName').innerHTML;
+        },
+        set: function(nick){
+            document.getElementById('nickName').innerHTML = nick;
+        }
+    });
+    Object.defineProperty(userInfo, "introduce", {
+        get: function(){
+            return document.getElementById('introduce').innerHTML;
+        },
+        set: function(introduce){
+            document.getElementById('introduce').innerHTML = introduce;
+            alert.log('ok');
+        }
+    })
+</script>
 <footer></footer>
 </body>
 
