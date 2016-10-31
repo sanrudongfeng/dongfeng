@@ -127,6 +127,7 @@
     var userInfo = {};
     Object.defineProperty(userInfo, "nickName", {
         get: function(){
+            console.log('ok');
             return document.getElementById('nickName').innerHTML;
         },
         set: function(nick){
