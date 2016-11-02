@@ -3,29 +3,52 @@
 
 <head>
     <meta charset="utf-8">
-   <meta name="viewport" content="width=device-width,user-scalable=no"/>
+    <meta name="viewport" content="width=device-width,user-scalable=no"/>
     <title>HTML5布局</title>
     <style>
         * {
-            box-sizing: content-box; /* 伸缩项目自动box-sizing:border-box，所以需调整为content-box */
+            box-sizing: border-box; /* 伸缩项目自动box-sizing:border-box，所以需调整为content-box */
             margin: 0;
             padding: 0;
         }
+
+        a {
+            cursor: auto;
+            font-size: 1rem;
+            color: rgb(102, 102, 102);
+            text-decoration: none;
+        }
+
+        a:link, a:visited {
+            /*text-decoration: underline;*/
+            /*color: #336699;*/
+        }
+
+        a:hover {
+            font-size: 1.1rem;
+            color: blue;
+            text-decoration: underline;
+        }
+
         body {
             background: url("./img/background.jpg") no-repeat;
-            background-color:rgb(191, 212, 229);
+            background-color: rgb(191, 212, 229);
             display: flex;
             flex-direction: column; /* 头、中部、脚纵向显示 */
         }
-        @media screen and (min-width:400px) {
+
+        @media screen and (min-width: 400px) {
             body {
-                font-size:1rem;
-            }}
-        @media screen and (min-width:500px) {
-            html {
-                font-size:2rem;
+                font-size: 1rem;
             }
         }
+
+        @media screen and (min-width: 500px) {
+            html {
+                font-size: 2rem;
+            }
+        }
+
         header, footer {
             flex: 0 0 200px; /* 头、脚尺寸固定，不放大、不缩小 */
             /*background-color: aqua;*/
@@ -33,65 +56,118 @@
 
         nav {
             flex: 0 0 50px; /* 头、脚尺寸固定，不放大、不缩小 */
-            background：rgb(69, 69, 69);
+            display: flex;
+            /*justify-content:flex-end;*/
+            /*align-items:center;*/
+            background-color: rgb(69, 69, 69);
         }
 
         header {
             display: flex;
             flex-flow: row nowrap;
-            justify-content:center;
+            justify-content: center;
             align-items: center;
-            background：rgb(72, 82, 94);
-            border-bottom: 1px red solid;
+        background：rgb(72, 82, 94);
         }
 
-        .header-title>h1{
+        .header-title > h1 {
             /*font-size:20px;*/
-            padding-right:2vh;
+            padding-right: 2vh;
         }
+
         main {
             display: flex;
             flex-flow: row nowrap;
             background-color: blueviolet;
         }
+
         aside {
             flex-shrink: 0;
             flex: 0 0 300px;
             order: -1;
             background-color: blue;
         }
+
         article {
             flex: 1;
         }
-        nav>ul{
-            padding-left:300px;
-            display:flex;
+
+        nav > ul {
+            margin: 0;
+            padding: 0;
+            flex: 1 1 auto;
+            display: flex;
             list-style-type: none;
             flex-flow: row nowrap;
+            justify-content: flex-start;
+            align-items: center;
         }
-        nav>ul>li{
-            border:green 1px solid;
-            border-radius:5px;
+
+        nav > ul > li {
+            text-align: center;
+            flex: 1 1 auto;
+            max-width: 8rem;
+            background-color: white;
+            margin-right: 0.2rem;
+            /*border:green 1px solid;*/
+            line-height: 100%;
+            /*border-radius:0.2rem 0.2rem 0 0;*/
         }
-        aside{
-            width:300px;
+
+        nav > ul > li > a {
+            display: inline-block;
+            vertical-align: center;
+        }
+
+        .space_holder {
+            flex: 0 0 300px;
+        }
+
+        .search_box {
+            flex: 0 0 10rem;
+            margin-right: 2rem;
+            background-color: aqua;
+            text-align:end;
+        }
+
+        .search_box input {
+            display: inline-block;
+            height: 70%;
+            vertical-align: center;
+        }
+
+        aside {
+            width: 300px;
         }
     </style>
 
 <body>
 <header class="row">
-    <div  class="header-title">
+    <div class="header-title">
         <h1>散入东风的日志</h1>
         <h2>original-seeker</h2>
     </div>
 </header>
 <nav class="row">
+    <div class="space_holder"></div>
     <ul>
-        <li><a href="">首页</a></li>
-        <li><a href="">js</a></li>
-        <li><a href="">设计</a></li>
-        <li><a href="">联系博主</a></li>
+        <li><a href="">
+            <pre>首  页</pre>
+        </a></li>
+        <li><a href="">
+            <pre>语言探索</pre>
+        </a></li>
+        <li><a href="">
+            <pre>架构设计</pre>
+        </a></li>
+        <li><a href="">
+            <pre>哲学人生</pre>
+        </a></li>
     </ul>
+    <div class="search_box">
+        <input type="search"/>
+        <button>搜索</button>
+    </div>
 </nav>
 <main>
     <aside>
